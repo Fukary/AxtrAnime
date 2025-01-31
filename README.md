@@ -26,26 +26,45 @@ AxtrAnime/
 ## 🤝 Cómo Contribuir
 
 1. **Clonar el repositorio**:
-   - Para Linux:
+   - Con HTTPS:
 
      ```bash
-     git clone <URL_DEL_REPOSITORIO>
+     git clone https://github.com/Fukary/AxtrAnime.git
      ```
 
-   - Para Windows:
+   - Con SSH:
 
      ```bash
-     git clone <URL_DEL_REPOSITORIO>
+     git clone git@github.com:Fukary/AxtrAnime.git
      ```
 
-2. **Realizar cambios**:
+2. **Instalar paquetes**:
+   - En esta caso use [bun](https://bun.sh/):
+
+     ```bash
+     bun install
+     ```
+
+
+3. **Despegar en local**:
+   - Para desplegar el proyecto en local y ver los cambios en tiempo real:
+
+     ```bash
+     bunx --bun astro dev
+     ```
+      o
+     ```bash
+     bun run dev
+     ```
+
+4. **Realizar cambios**:
    - Crea una nueva rama:
 
      ```bash
      git checkout -b nombre-de-tu-rama
      ```
 
-3. **Hacer un Pull Request**:
+5. **Hacer un Pull Request**:
    - Asegúrate de que tus cambios estén listos y haz un Pull Request a la rama principal. Para ello, sigue estos pasos:
      - Agrega tus cambios al índice:
 
