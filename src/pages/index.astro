@@ -1,0 +1,18 @@
+---
+import LatestEpisodes from "@components/shared/LatestEpisodes.astro";
+import Greeting from "@components/svelte/Greeting.svelte";
+import Layout from "@layouts/Layout.astro";
+import { getLatestAnimes } from "@lib/api/animerunway";
+
+const latestAnimes = await getLatestAnimes();
+
+// const name_id = await getAnimeSearch(
+// 	latestAnimes[0].name.toLowerCase().replace(/ /g, "-"),
+// );
+// console.log(name_id[0]);
+---
+
+<Layout title='Home'>
+	<Greeting client:load />
+	<LatestEpisodes animes={latestAnimes} />
+</Layout>

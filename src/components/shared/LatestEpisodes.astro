@@ -1,0 +1,24 @@
+---
+import AnimeCard from "@components/shared/AnimeCard.astro";
+import type { Anime } from "@typs/anime";
+
+interface Props {
+	animes: Anime[];
+}
+
+const { animes } = Astro.props;
+console.log(animes);
+---
+
+<section>
+    <h2 class="text-3xl font-bold mb-4">Ultimos Episodios</h2>
+    <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-7 gap-4 lg:gap-6 px-2 md:px-4">
+		{
+            animes
+            .filter((anime) => !anime.region_locked)
+            .map((anime) => (
+                <AnimeCard anime={anime} />
+            ))
+        }
+    </div>
+</section>

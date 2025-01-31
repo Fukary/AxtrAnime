@@ -1,0 +1,16 @@
+---
+import Layout from "@layouts/Layout.astro";
+import type { AnimeData } from "../../test/anime-data";
+
+const { id } = Astro.params;
+
+const datas = await fetch(`https://kitsu.io/api/edge/anime/${id}`);
+const data = await datas.json();
+
+const { attributes }: AnimeData = data.data;
+---
+
+<Layout title={attributes.canonicalTitle}>
+	<h1>{attributes.canonicalTitle}</h1>
+	<img src={attributes.posterImage.large} alt="">
+</Layout>

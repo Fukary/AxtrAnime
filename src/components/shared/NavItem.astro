@@ -1,0 +1,13 @@
+---
+interface Props {
+	title: string;
+	url: string;
+	isBold?: boolean;
+}
+
+const { title, url, isBold } = Astro.props;
+---
+
+<li class={isBold ? "font-bold" : "font-light"}>
+	<a href={url} class="hover:text-blue-400 px-1 py-2">{title}</a>
+</li>

@@ -1,0 +1,48 @@
+---
+import Star from "@icons/Star.astro";
+import { DEFAULT_IMAGE } from "@lib/utils/constants";
+import { truncateText } from "@lib/utils/formatters";
+import type { Anime } from "@typs/anime";
+
+interface Props {
+	anime: Anime;
+}
+
+const { anime } = Astro.props;
+// console.log(anime.title);
+---
+
+<article class="group relative">
+    <a href={`/anime/${anime.main_id}`}>
+        <div
+            class="flex justify-center absolute right-0 bottom-0 w-full py-3 translate-y-4
+            transition-all duration-500 opacity-0 rounded-b-lg
+            group-hover:translate-y-0 group-hover:opacity-100
+            z-10 bg-gradient-to-t from-zinc-950 via-zinc-950/80"
+        >
+            <h4 class="text-zinc-100 w-full break-words text-center font-bold text-sm">{anime.name}</h4>
+        </div>
+
+        <picture class="aspect-[6/8] w-full h-auto flex-none">
+            <img
+                class="object-cover object-center h-full w-full rounded-lg"
+                src={anime.img || DEFAULT_IMAGE}
+                alt={`cover of ${anime.name}`}
+            />
+        </picture>
+
+        <!-- <div
+            class="flex items-center justify-center px-2 h-5 gap-0.5 rounded-md
+            text-yellow-300 font-bold absolute top-1 left-1 bg-blue-500"
+        >
+            <span class="leading-none text-xs mt-0.5">{anime.rating}</span>
+            <Star class="text-yellow-300 size-3 mb-0.5" />
+        </div> -->
+
+        <div
+            class="flex text-xs items-center justify-center px-2 h-5 gap-0.5 rounded-md
+            text-zinc-100 font-extrabold absolute top-1 right-1 bg-red-500">
+            {anime.type}
+        </div>
+    </a>
+</article>
