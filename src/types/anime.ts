@@ -31,6 +31,7 @@ export interface EpisodeThumbnail {
 	episodes: {
 		sub: number;
 	};
+	duration: string;
 	region_locked: boolean;
 }
 
