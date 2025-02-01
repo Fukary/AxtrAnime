@@ -1,5 +1,5 @@
 export interface Anime {
-	main_id: number;
+	mal_id: number;
 	title: string;
 	name: string;
 	img: string;
@@ -11,7 +11,9 @@ export interface Anime {
 	region_locked: boolean;
 	synopsis: string;
 	type: string;
-	episodes: number;
+	episodes: {
+		sub: number;
+	};
 	status: string;
 	aired: {
 		from: string;
@@ -22,31 +24,14 @@ export interface Anime {
 	genres: string[];
 }
 
-export interface AnimeE {
-	entry: {
-		main_id: number;
-		title: string;
-		images: {
-			webp: {
-				image_url: string;
-			};
-		};
-		type: string;
+export interface EpisodeThumbnail {
+	id: string;
+	name: string;
+	img: string;
+	episodes: {
+		sub: number;
 	};
 	region_locked: boolean;
-	id: number;
-	title: string;
-	image: string;
-	synopsis: string;
-	episodes: number;
-	status: string;
-	aired: {
-		from: string;
-		to: string | null;
-	};
-	duration: string;
-	rating: string;
-	genres: string[];
 }
 
 export interface WeeklySchedule {

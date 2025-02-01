@@ -1,13 +1,13 @@
 ---
 import AnimeCard from "@components/shared/AnimeCard.astro";
-import type { Anime } from "@typs/anime";
+import type { EpisodeThumbnail } from "@typs/anime";
 
 interface Props {
-	animes: Anime[];
+	animes: EpisodeThumbnail[];
 }
 
 const { animes } = Astro.props;
-console.log(animes);
+// console.log(animes[0]);
 ---
 
 <section>
@@ -15,9 +15,10 @@ console.log(animes);
     <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-7 gap-4 lg:gap-6 px-2 md:px-4">
 		{
             animes
+            .slice(0, 21)
             .filter((anime) => !anime.region_locked)
             .map((anime) => (
-                <AnimeCard anime={anime} />
+                <AnimeCard anime={anime} url="animes" />
             ))
         }
     </div>
