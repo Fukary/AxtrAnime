@@ -1,5 +1,5 @@
 import { ANIMERUNWAY_BASE_URL } from "@lib/utils/constants";
-import type { Anime } from "@typs/anime";
+import type { EpisodeThumbnail } from "@typs/anime";
 import type { AnimeRunWayResponse } from "@typs/api";
 
 async function fetchAnimeWay<T>(endpoint: string): Promise<T> {
@@ -11,6 +11,6 @@ async function fetchAnimeWay<T>(endpoint: string): Promise<T> {
 	return data.animes;
 }
 
-export async function getLatestAnimes(): Promise<Anime[]> {
-	return fetchAnimeWay<Anime[]>("/recently-updated?limit=10");
+export async function getLatestEpisodes(): Promise<EpisodeThumbnail[]> {
+	return fetchAnimeWay<EpisodeThumbnail[]>("/recently-updated");
 }
