@@ -1,13 +1,30 @@
 ---
 interface Props {
-	title: string;
 	url: string;
 	isBold?: boolean;
 }
 
-const { title, url, isBold } = Astro.props;
+const { url, isBold } = Astro.props;
+const urlNav = Astro.url.pathname;
+console.log(urlNav);
+console.log(url);
 ---
 
-<li class={isBold ? "font-bold" : "font-light"}>
-	<a href={url} class="hover:text-blue-400 px-1 py-2">{title}</a>
+<!-- <li class="rounded-lg">
+	<a
+		class=`flex gap-2 items-center justify-center rounded-lg text-medium
+				${isBold ? "font-bold" : "font-light"} px-3 py-3 hover:bg-blue-600`
+		href={url}
+	>
+		<slot />
+	</a>
+</li> -->
+
+<li>
+	<a
+		class=`flex gap-2 items-center py-2 px-3 rounded text-zinc-50 hover:bg-blue-500 ${urlNav == url ? "bg-gradient-to-r from-blue-500 to-transparent font-bold" : ""}`
+		href={url}>
+		<svg height="24" width="24" viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 12l-2 0l9 -9l9 9l-2 0" /><path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" /><path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" /></svg>
+		<slot />
+	</a>
 </li>

@@ -2,16 +2,13 @@
 import NavItem from "@components/shared/NavItem.astro";
 ---
 
-<header class="bg-zinc-200 dark:bg-zinc-800 flex justify-center items-center w-full py-6 px-5">
-    <nav class="flex-1 flex items-center gap-12 max-w-[1360px]">
+<header class="[grid-area:header] bg-zinc-200 dark:bg-zinc-800 flex justify-between items-center w-full py-6 px-5">
+    <!-- <nav class="flex-1 flex items-center gap-12 max-w-[1360px]"> -->
         <a class="flex flex-col items-center" href="/">
             <h1 class="text-3xl font-extrabold">AXTRANIME</h1>
-            <span class="text-sm tracking-[0.35rem]">ANIME ONLINE</span>
+            <span class="text-xs tracking-[0.25rem]">WATCH ANIME FREE</span>
         </a>
         <ul class="flex gap-6">
-            <NavItem title="Inicio" url="/" />
-            <NavItem title="Animes" url="/" />
-            <NavItem title="Programacion Semanal" url="/" isBold />
         </ul>
-    </nav>
+    <!-- </nav> -->
 </header>
