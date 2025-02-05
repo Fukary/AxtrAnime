@@ -11,7 +11,7 @@ const { anime, url } = Astro.props;
 ---
 
 <article class="group relative hover:scale-110 duration-500">
-    <a href={`/${url}/${anime.name.toLowerCase().replace(/ /g, "-")}`} class="group-hover:scale-50">
+    <a href={`/${url}/${anime.id}`} class="group-hover:scale-50">
         <picture class="aspect-[6/8] w-full h-auto flex-none">
             <img
                 class="object-cover object-center h-full w-full rounded-sm"

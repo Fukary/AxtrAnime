@@ -1,5 +1,5 @@
 import { ANIMERUNWAY_BASE_URL } from "@lib/utils/constants";
-import type { EpisodeThumbnail } from "@typs/anime";
+import type { EpisodeThumbnail, EpisodeVideo } from "@typs/anime";
 import type { AnimeRunWayResponse } from "@typs/api";
 
 async function fetchAnimeWay<T>(endpoint: string): Promise<T> {
@@ -13,4 +13,8 @@ async function fetchAnimeWay<T>(endpoint: string): Promise<T> {
 
 export async function getLatestEpisodes(): Promise<EpisodeThumbnail[]> {
 	return fetchAnimeWay<EpisodeThumbnail[]>("/recently-updated");
+}
+
+export async function getEpisode(id: string, episodeNumber: number): Promise<EpisodeVideo> {
+	return fetchAnimeWay<EpisodeVideo>(`/episode-srcs?id=${id}?ep=${episodeNumber}&server=vidstreaming&category=sub`);
 }
