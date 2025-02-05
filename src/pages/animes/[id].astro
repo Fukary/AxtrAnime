@@ -1,16 +1,28 @@
 ---
 import Layout from "@layouts/Layout.astro";
-import type { AnimeData } from "../../test/anime-data";
+import { getEpisode, getLatestEpisodes } from "@lib/api/animerunway";
+import type { EpisodeThumbnail } from "@typs/anime";
 
+export async function getStaticPaths() {
+	const data = await getLatestEpisodes();
+
+	return data.map((anime) => {
+		return {
+			params: { id: anime.id},
+			props: { anime },
+		};
+	});
+}
+
+export const prerender = true;
 const { id } = Astro.params;
-
-const datas = await fetch(`https://kitsu.io/api/edge/anime/${id}`);
-const data = await datas.json();
-
-const { attributes }: AnimeData = data.data;
+const { anime } = Astro.props;
+const episode = await getEpisode(id, anime.episodes.sub);
+console.log(id)
+console.log(episode);
 ---
 
-<Layout title={attributes.canonicalTitle}>
-	<h1>{attributes.canonicalTitle}</h1>
-	<img src={attributes.posterImage.large} alt="">
+<Layout title={id}>
+	<h1>{anime.name}  -  {anime.episodes.sub}</h1>
+	<img src={anime.img} alt="">
 </Layout>

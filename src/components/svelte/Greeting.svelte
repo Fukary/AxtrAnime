@@ -5,12 +5,18 @@ const hours = currentTime.getHours();
 let greeting = "";
 
 if (hours < 12) {
-	greeting = "Good morning";
+	greeting = "Buenos Dias";
 } else if (hours < 18) {
-	greeting = "Good afternoon";
+	greeting = "Buenas Tardes";
 } else {
-	greeting = "Good evening";
+	greeting = "Buenas Noches";
 }
 </script>
 
-<h2 class="text-4xl font-bold mb-4 uppercase text-blue-500 dark:text-blue-400">{greeting}</h2>
+<h2 class="text-5xl font-bold py-1 uppercase ml-auto text-blue-500 dark:text-blue-300 drop-shadow-xl shadow-white pl-4 border-l-8 border-blue-300">{greeting}</h2>
+
+<style>
+	h2 {
+		font-family: 'Rammetto One';
+	}
+</style>

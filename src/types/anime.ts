@@ -35,6 +35,11 @@ export interface EpisodeThumbnail {
 	region_locked: boolean;
 }
 
+export interface EpisodeVideo {
+	tracks: [];
+	mainID: number;
+}
+
 export interface WeeklySchedule {
 	monday: Anime[];
 	tuesday: Anime[];
