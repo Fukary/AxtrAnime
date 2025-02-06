@@ -36,8 +36,17 @@ export interface EpisodeThumbnail {
 }
 
 export interface EpisodeVideo {
-	tracks: [];
-	mainID: number;
+	info: {
+		name: string;
+		img: string;
+		rating: string;
+		category: string;
+		description: string;
+	};
+	moreInfo: {
+		Genres: string[];
+	};
+	relatedAnimes: Anime[];
 }
 
 export interface WeeklySchedule {

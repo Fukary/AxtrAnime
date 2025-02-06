@@ -3,26 +3,39 @@ import Layout from "@layouts/Layout.astro";
 import { getEpisode, getLatestEpisodes } from "@lib/api/animerunway";
 import type { EpisodeThumbnail } from "@typs/anime";
 
-export async function getStaticPaths() {
-	const data = await getLatestEpisodes();
+// export async function getStaticPaths() {
+// 	const data = await getLatestEpisodes();
+// 
+// 	return data.map((anime) => {
+// 		return {
+// 			params: { id: anime.id},
+// 			props: { anime },
+// 		};
+// 	});
+// }
+// 
+// export const prerender = true;
+// const { id } = Astro.params;
 
-	return data.map((anime) => {
-		return {
-			params: { id: anime.id},
-			props: { anime },
-		};
-	});
-}
-
-export const prerender = true;
 const { id } = Astro.params;
-const { anime } = Astro.props;
-const episode = await getEpisode(id, anime.episodes.sub);
-console.log(id)
-console.log(episode);
+const episode = await getEpisode(id as string, 5);
+// console.log(id)
+// console.log(episode);
 ---
 
-<Layout title={id}>
-	<h1>{anime.name}  -  {anime.episodes.sub}</h1>
-	<img src={anime.img} alt="">
+<Layout title={episode.info.name}>
+	<section class="flex gap-10 w-full">
+		<img src={episode.info.img} class="w-60 aspect-[7/10] rounded-lg [mask-image:linear-gradient(black_75%,transparent)]" alt="">
+		<div class="flex-1 flex flex-col gap-2">
+			<h2 class="text-3xl font-bold text-balance">{episode.info.name}</h2>
+			<ul class="flex items-center gap-3">
+				{
+					episode.moreInfo.Genres.map((genre) => (
+						<li class="px-2 py-1 bg-purple-400/50 rounded-md text-sm font-bold select-none">{genre}</li>
+					))
+				}
+			</ul>
+			<p class="text-lg text-pretty mt-3 max-w-[1000px]">{episode.info.description}</p>
+		</div>
+	</section>
 </Layout>

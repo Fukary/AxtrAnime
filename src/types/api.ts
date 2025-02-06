@@ -22,3 +22,9 @@ export interface AnimeRunWayResponse<T> {
 	currentPage: number;
 	hasNextPage: boolean;
 }
+
+export interface AnimeRunWayServers<T> {
+	info: T;
+	moreInfo: T;
+	relatedAnimes: T;
+}
